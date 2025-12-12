@@ -1,0 +1,42 @@
+[
+  {
+    "id": "t1",
+    "name": "David Smith",
+    "subject": "外語部",
+    "title": "外籍教學主任",
+    "image": "images/teacher1.jpg",
+    "intro": "擁有 10 年幼兒美語教學經驗，擅長引導式教學。"
+  },
+  {
+    "id": "t2",
+    "name": "王美玲",
+    "subject": "幼保部",
+    "title": "園長",
+    "image": "images/teacher2.jpg",
+    "intro": "致力於幼兒教育 20 年，視每個孩子如己出。"
+  },
+  {
+    "id": "t3",
+    "name": "陳雅婷",
+    "subject": "藝術部",
+    "title": "美術老師",
+    "image": "images/teacher3.jpg",
+    "intro": "國立藝術大學畢業，啟發孩子的色彩創造力。"
+  },
+  {
+    "id": "t4",
+    "name": "林志豪",
+    "subject": "體能部",
+    "title": "體操教練",
+    "image": "images/teacher4.jpg",
+    "intro": "國家級體操教練證照，安全專業的體能訓練。"
+  },
+  {
+    "id": "t5",
+    "name": "Sarah Jones",
+    "subject": "外語部",
+    "title": "美語老師",
+    "image": "images/teacher5.jpg",
+    "intro": "親切活潑，深受小朋友喜愛的故事姐姐。"
+  }
+]

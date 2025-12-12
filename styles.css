@@ -1,0 +1,272 @@
+﻿:root {
+    --royal-blue: #002366; /* 品牌主色 */
+    --royal-red: #CC0000; /* 品牌強調色 */
+    --text-white: #ffffff;
+    --text-light: #ecf0f1;
+    --text-dark: #333333;
+    --border-gray: #e0e0e0; /* 細灰線顏色 */
+    --main-font: "Microsoft JhengHei", sans-serif;
+}
+
+body {
+    font-family: var(--main-font);
+    color: var(--text-dark);
+    padding-top: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+/* --- Header Styles (Desktop First) --- */
+
+header {
+    /* 1. Header背景顏色遮罩(80% 不透明) + 毛玻璃效果 */
+    /* 改為白色基底以搭配黑色文字，若需深色背景請改為 rgba(0, 35, 102, 0.8) 但文字需反白 */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    -webkit-backdrop-filter: blur(10px); /* Safari 支援 */
+
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* 增加一點底部邊界感 */
+    transition: all 0.3s ease;
+}
+
+    /* 2. Logo 在左，導覽列在右排開填滿空間 [Prompt Point 2] */
+    header .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    header .navbar-collapse {
+        justify-content: flex-end; /* 確保內容往右延伸 */
+    }
+
+.navbar-brand {
+    margin-left: 20px;
+    z-index: 1001; /* 確保 Logo 在最上層 */
+}
+
+    .navbar-brand img {
+        height: 80px; /* 原始高度 */
+        transition: height 0.3s ease;
+    }
+
+/* 3. 導覽列每個選單項目都是固定方格格線是細細的灰線 [Prompt Point 3] */
+/* 桌面版顯示設定 */
+@media (min-width: 992px) {
+    .navbar-nav {
+        width: 100%; /* 填滿剩餘空間 */
+        display: flex;
+        justify-content: flex-end; /* 向右對齊，或者使用 space-between */
+    }
+
+    .nav-item {
+        flex-grow: 1; /* 讓每個格子平均分配空間 (選用) 或依內容撐開 */
+        text-align: center;
+        border-right: 1px solid var(--border-gray); /* 右側細灰線 */
+        display: flex; /* 讓連結填滿 li */
+        align-items: stretch;
+    }
+
+        /* 第一個項目左邊也要有線，形成完整方格 */
+        .nav-item:first-child {
+            border-left: 1px solid var(--border-gray);
+        }
+
+    .nav-link {
+        width: 100%;
+        padding: 20px 10px !important; /* 增加高度讓方格更明顯 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease;
+    }
+}
+
+/* 4. 導覽列每個按鈕都是「上中文、下英文」的排列。文字顏色黑色粗體 [Prompt Point 4] */
+.nav-link {
+    color: #000000 !important; /* 黑色 */
+    font-weight: bold; /* 粗體 */
+    line-height: 1.2;
+}
+
+.nav-item-text {
+    display: block;
+}
+
+.nav-zh {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.nav-en {
+    font-size: 0.75rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    opacity: 0.7; /* 英文稍微淡一點增加層次 */
+}
+
+/* 5. 導覽列按鈕按下去有微互動效果 [Prompt Point 5] */
+.nav-link:active {
+    background-color: rgba(0, 0, 0, 0.05); /* 點擊時背景微灰 */
+    transform: scale(0.98); /* 微微縮小 */
+}
+
+.nav-link:hover {
+    background-color: rgba(0, 35, 102, 0.05); /* 懸停時淡淡的品牌色背景 */
+    color: var(--royal-blue) !important; /* 懸停時文字變品牌色 */
+}
+
+/* 6. header須具備Sticky 效果 */
+header.sticky {
+    position: fixed;
+    top: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.95); /* 捲動時背景變得更實一點 */
+}
+
+    /* 6a. 往下捲動 (Sticky) 時，Logo縮小: 50px [Prompt Point 6a] */
+    header.sticky .navbar-brand img {
+        height: 50px !important;
+    }
+
+/* 漢堡按鈕樣式 (配合淺色 Header，需改為深色圖示) */
+.navbar-toggler {
+    border: none;
+    padding: 10px;
+    margin-right: 20px;
+    transition: transform 0.2s;
+}
+    /* 7a-1. 漢堡按鈕按下去有微互動效果 [Prompt Point 7a-1] */
+    .navbar-toggler:active {
+        transform: scale(0.9);
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+/* 使用 Bootstrap 內建的深色 Toggler (因為 Header 是淺色) */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* --- Mobile Offcanvas Optimization [Prompt Point 7] --- */
+@media (max-width: 991px) {
+    /* 7a-2. 100% FIT 高度：使用dvh [Prompt Point 7a-2] */
+    .offcanvas {
+        background-color: var(--royal-blue); /* 手機版維持品牌藍底白字，視覺對比更佳 */
+        height: 100dvh !important;
+        border-left: none;
+    }
+
+    /* 7a-3. 可捲動 (Scrollable) [Prompt Point 7a-3] */
+    .offcanvas-body {
+        overflow-y: auto; /* 啟用垂直捲動 */
+        -webkit-overflow-scrolling: touch; /* iOS 平滑捲動 */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 0;
+    }
+
+    /* 手機版選單重置樣式 */
+    .offcanvas .navbar-nav {
+        width: 100%;
+        padding-bottom: 60px; /* 底部留白，避開 Home Bar */
+    }
+
+    .offcanvas .nav-item {
+        border-right: none; /* 移除格線 */
+        border-left: none;
+        width: 100%;
+    }
+
+    .offcanvas .nav-link {
+        /* 手機版文字維持白色，覆蓋掉上面的黑色設定 */
+        color: var(--text-white) !important;
+        text-align: left;
+        padding: 20px 30px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        align-items: flex-start; /* 文字靠左 */
+    }
+
+    .offcanvas .nav-zh {
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+    }
+
+    .offcanvas .nav-en {
+        color: rgba(255,255,255,0.6);
+        font-weight: normal;
+    }
+
+    /* 手機版點擊互動 */
+    .offcanvas .nav-link:active {
+        background-color: var(--royal-red);
+        transform: scale(0.98);
+        color: white !important;
+    }
+}
+/* 非首頁專用的版面推擠 (Padding)
+   Header 高度大約 80~100px，我們設定 120px 確保內容有呼吸空間
+*/
+.page-offset {
+    padding-top: 120px !important; /* 使用 !important 確保權重夠高 */
+    min-height: 100vh; /* 確保內容少時 footer 也在最下面 */
+}
+
+/* 手機版 Header 比較矮，可以稍微縮小留白 (選用) */
+@media (max-width: 991px) {
+    .page-offset {
+        padding-top: 100px !important;
+    }
+}
+
+/* --- Footer Styles --- */
+footer {
+    background-color: var(--royal-blue);
+    color: var(--text-white);
+    border-top: 5px solid var(--royal-red);
+}
+
+    footer a {
+        color: var(--text-light);
+        text-decoration: none;
+    }
+
+        footer a:hover {
+            color: var(--text-white);
+        }
+
+/* --- Utility / Animations --- */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }

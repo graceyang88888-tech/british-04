@@ -1,0 +1,50 @@
+[
+  {
+    "id": "c1",
+    "name": "奧福音樂啟蒙",
+    "category": "才藝課程",
+    "teacher": "Linda 老師",
+    "image": "images/course1.jpg",
+    "desc": "透過律動與樂器敲擊，啟發幼兒對音樂的興趣。"
+  },
+  {
+    "id": "c2",
+    "name": "全美語沈浸式",
+    "category": "語言課程",
+    "teacher": "David Sir",
+    "image": "images/course2.jpg",
+    "desc": "外師全天候陪伴，自然的語言學習環境。"
+  },
+  {
+    "id": "c3",
+    "name": "樂高積木建構",
+    "category": "益智課程",
+    "teacher": "小凱老師",
+    "image": "images/course3.jpg",
+    "desc": "訓練空間概念與手眼協調能力。"
+  },
+  {
+    "id": "c4",
+    "name": "幼兒體操",
+    "category": "體能課程",
+    "teacher": "阿虎教練",
+    "image": "images/course4.jpg",
+    "desc": "強化大肌肉發展，消耗孩子無限的體力。"
+  },
+  {
+    "id": "c5",
+    "name": "科學實驗室",
+    "category": "益智課程",
+    "teacher": "Dr. Wu",
+    "image": "images/course5.jpg",
+    "desc": "生活中的科學原理，動手做做看。"
+  },
+  {
+    "id": "c6",
+    "name": "日文童謠唱跳",
+    "category": "語言課程",
+    "teacher": "Yuki 老師",
+    "image": "images/course6.jpg",
+    "desc": "快樂學日語，認識異國文化。"
+  }
+]
